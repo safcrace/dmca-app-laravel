@@ -4,21 +4,21 @@
 
 	<h1 class="page-heading">Prepare a DMCA Notice</h1>
 
-	{!! Form::open() !!}
+	{!! Form::open(['method' => 'GET', 'action' => 'NoticesController@confirm']) !!}
 
 		<div class="form-group">
 			{!! Form::label('provider_id', 'Who are we sending this to?') !!}
-			{!! Form::select('provider_id', [], null, ['class' => 'form-control']) !!}
+			{!! Form::select('provider_id', $providers, null, ['class' => 'form-control']) !!}
 		</div>
 
 		<div class="form-group">
 			{!! Form::label('infringing_title', 'What is the title of the content that is being ingringed upon.') !!}
-			{!! Form::text('infgringing_title', null, ['class' => 'form-control']) !!}
+			{!! Form::text('infringing_title', null, ['class' => 'form-control']) !!}
 		</div>
 
 		<div class="form-group">
 			{!! Form::label('infringing_link', 'What is the link to where this content is located.') !!}
-			{!! Form::text('infgringing_link', null, ['class' => 'form-control']) !!}
+			{!! Form::text('infringing_link', null, ['class' => 'form-control']) !!}
 		</div>
 
 		<div class="form-group">
@@ -28,7 +28,7 @@
 
 		<div class="form-group">
 			{!! Form::label('original_description', 'And, finally, it might help to provide some extra information related to this DMCA notice') !!}
-			{!! Form::text('original_description', null, ['class' => 'form-control']) !!}
+			{!! Form::textarea('original_description', null, ['class' => 'form-control']) !!}
 		</div>
 
 		<div class="form-group">
@@ -36,5 +36,7 @@
 		</div>
 
 	{!! Form::close() !!}
+
+	@include('errors.list')
 
 @endsection
