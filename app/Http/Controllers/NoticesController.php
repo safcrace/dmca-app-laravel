@@ -7,6 +7,7 @@ use App\Provider;
 
 use Illuminate\Http\Request;
 use Illuminate\Auth\Guard;
+//use Illuminate\Session\SessionManager;
 
 class NoticesController extends Controller {
 
@@ -47,9 +48,17 @@ class NoticesController extends Controller {
 
 	public function confirm(PrepareNoticesRequest $request, Guard $auth)
 	{
-		$templaten = $this->compileDmcaTemplate($request->all(), $auth);
+		$template = $this->compileDmcaTemplate($data = $request->all(), $auth);
+
+		session()->flash('dmca', $data);
 
 		return view('notices.confirm', compact('template'));
+	}
+
+	public function store()
+	{
+		$data = session()->get('dmca');
+		return \Request::input('template');
 	}
 
 
@@ -63,5 +72,6 @@ class NoticesController extends Controller {
 			'email' => $auth->user()->email,
 		];
 		$template = view()->file(app_path('Http/Templates/dmca.blade.php'), $data);
+		return $template;
 	}
 }
