@@ -8,4 +8,16 @@ abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 
+	protected $user;
+
+	protected $signedIn;
+
+	/**
+	* Created a new controller instance.
+	**/
+	public function __construct()
+	{
+		$this->user = $this->signedIn = \Auth::user();
+	}
+
 }
