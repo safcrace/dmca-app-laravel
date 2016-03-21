@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('infringing_title', 'What is the title of the content that is being ingringed upon.') !!}
+			{!! Form::label('infringing_title', 'What is the title of the content that is being infringed upon.') !!}
 			{!! Form::text('infringing_title', null, ['class' => 'form-control']) !!}
 		</div>
 
@@ -32,7 +32,7 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::submit('Preview Notice', ['class' => 'btn btn-primary form-control']) !!}		
+			{!! Form::submit('Preview Notice', ['class' => 'btn btn-primary form-control']) !!}
 		</div>
 
 	{!! Form::close() !!}
